@@ -5,7 +5,7 @@ Este proyecto fue desarrollado como parte de la asignatura Diseño Basado en Mic
 * Jose Carlos Leal Iglesias
 ## Tecnologías utilizadas 🚀
 Se han usado principalmente las siguientes tecnologías:
-* ***Hardware*** 🛠️
+* ***Hardware*** 🖲️
   * Microcontrolador LCP-4088
   * Módulo de foto-resistencia KY-018
   * Módulo joystick de eje XY-KY-023
@@ -13,6 +13,9 @@ Se han usado principalmente las siguientes tecnologías:
 * ***Software*** 💻
   * IDE: **Keil uVision5**
   * Lenguaje principal: **C**
+## Configuración del Entorno 🛠️
+1. Instalar **Keil µVision5**.
+2. Instalar el Pack de dispositivos **Keil::LPC4000_DFP**.
 ##  Compilación y carga 🧩
 1. Abrir el proyecto 'project/proyecto.uvprojx'.
 2. Pulsar 'ctrl + F7' (Translate), y luego 'F7' (Build) para compilar.
