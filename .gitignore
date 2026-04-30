@@ -2,7 +2,6 @@
 # Ignoramos las carpetas que contienen los objetos compilados y listados
 Listings/
 Objects/
-RTE/
 
 # --- Archivos de depuración y configuración de usuario ---
 *.uvguix.*
