@@ -1,0 +1,28 @@
+# --- Archivos de salida de Keil µVision ---
+# Ignoramos las carpetas que contienen los objetos compilados y listados
+Listings/
+Objects/
+RTE/
+
+# --- Archivos de depuración y configuración de usuario ---
+*.uvguix.*
+*.uvoptx
+JLinkLog.txt
+JLinkSettings.ini
+
+# --- Archivos temporales de compilación ---
+*.o
+*.d
+*.crf
+*.htm
+*.dep
+*.build_log.htm
+*.lnp
+*.axf
+*.sct
+*.map
+*.lst
+
+# --- Archivos de sistema ---
+.DS_Store
+Thumbs.db
