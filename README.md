@@ -11,5 +11,9 @@ Se han usado principalmente las siguientes tecnologías:
   * Módulo joystick de eje XY-KY-023
   * Pantalla: **Embedded Artists LCD Expansion Board**
 * ***Software*** 💻
-  * CLI: **Keil uVision5**
+  * IDE: **Keil uVision5**
   * Lenguaje principal: **C**
+##  Compilación y carga 🧩
+1. Abrir el proyecto 'project/proyecto.uvprojx'.
+2. Pulsar 'ctrl + F7' (Translate), y luego 'F7' (Build) para compilar.
+3. Conectar la placa a través de una conexión como **J-link**, y pulsar 'F8' (Download).
