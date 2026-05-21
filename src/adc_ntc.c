@@ -13,6 +13,7 @@
  */
 
 #include "adc_ntc.h"
+#include "adc_perifericos.h"
 #include <math.h>
 
 // ===== ADC_NTC - Funciones públicas =====
@@ -66,5 +67,15 @@ float32_t adc_ntc_tension_a_temperatura(float32_t tension) {
 	
 	//devolvemos la temperatura
 	return (1/(a+(b*log(R))+(c*log(pow(R, 3))))) - 273.16f;
+}
+
+void inicializar_perifericos(uint32_t frecuencia_adc){
+	adc_inicializar(frecuencia_adc,CANAL_LDR);
+	adc_inicializar(frecuencia_adc,CANAL_JOYSTICK);
+}
+
+uint16_t ldr_leer_valor(adc_canal_t canal){
 	
+	return adc_convertir(canal);
+
 }
