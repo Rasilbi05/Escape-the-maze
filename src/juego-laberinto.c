@@ -12,51 +12,48 @@
 
 #include "juego-laberinto.h"
 
+void actualizar_posicion_jugador(uint16_t x, uint16_t y){
+	//Actualizamos la posición del jugador
+	J1.x = x;
+	J1.y = y;
+	
+	//Si hay luz, actualizamos el cono de visión
+	if(/*funcion encargada de comprobar el lcd*/){
+		
+	}else{//ponemos todo a oscuras
+		
+	}
+}
+
 void laberinto_inicializar(){
 	
-	//creamos un vector con las paredes que apareceran en el laberinto
-	Pared paredes[]={
-		{0, 0, 480, 10},		//límite superior
-		{260, 0, 480, 10},	//límite inferior
-		{0, 0, 10, 270},		//límite izquierdo
-		{0, 460, 10, 270},	//límite derecho
-		//PAREDES DEL LABERINTO
-		
-	};
-	
-	uint16_t num_paredes = sizeof(paredes) / sizeof(Pared);
-	
-	//rellenamos la matriz Laberinto con 0s
-	for(uint16_t i = 0; i<270; ++i){
-		for(uint16_t j = 0; j<480; ++j){
+	//iniciamos el laberinto con todo a 0
+	for(uint16_t i = 0; i < TAM_X; ++i){
+		for(uint16_t j = 0; j < TAM_Y; ++j){
 			Laberinto[i][j] = 0;
 		}
 	}
 	
-	//introducimos las paredes en el laberinto
-	for(uint16_t k = 0; k<num_paredes; ++k){
-		uint16_t fila_inicio = paredes[k].x;
-		uint16_t fila_final = paredes[k].x + paredes[k].alto;
-		uint16_t columna_inicio = paredes[k].y;
-		uint16_t columna_final = paredes[k].y + paredes[k].ancho;
-		
-		//comprobamos que no sobrepasen los valores
-		if(fila_final > 270){
-				fila_final = 270;
-		}
-		
-		if(columna_final > 480){
-				columna_final = 480;
-		}
-		
-		//introducimos las paredes
-		for(uint16_t i = fila_inicio; i<fila_final;++i){
-			for(uint16_t j = columna_inicio; j<columna_final; ++j){
-				Laberinto[i][j] = 1;			
+	//introducimos las paredes correspondientes al laberinto
+	for(uint16_t i = 0; i < TAM_X/10; ++i){
+		for(uint16_t j = 0; j < TAM_Y/10; ++j){
+			if(PAREDES_LABERINTO[i][j] == 1){//hay una pared
+				uint16_t correspondiente_x  = i*10;
+				uint16_t correspondiente_y = j*10;
+				for(uint16_t c = correspondiente_x; c < correspondiente_x + 10; ++c){
+					for(uint16_t f = correspondiente_y; f < correspondiente_y + 10; ++f){
+						if(f < TAM_X && c < TAM_Y){
+							Laberinto[f][c] = 1;
+						}
+					}
+				}
 			}
 		}
-		
 	}
 	
+	//Introducimos como posición del jugador la entrada al laberinto
+	actualizar_posicion_jugador(ENTRADA_X, ENTRADA_Y);
+
+	}
 	
 }

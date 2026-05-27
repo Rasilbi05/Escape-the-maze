@@ -404,6 +404,16 @@
               <FileType>4</FileType>
               <FilePath>..\src\base_lpc40xx.lib</FilePath>
             </File>
+            <File>
+              <FileName>juego-laberinto.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\juego-laberinto.h</FilePath>
+            </File>
+            <File>
+              <FileName>juego-laberinto.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\juego-laberinto.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
