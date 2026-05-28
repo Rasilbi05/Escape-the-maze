@@ -46,6 +46,9 @@ void actualizar_posicion_jugador(uint16_t x, uint16_t y){
 			case JOYSTICK_IZQUIERDA:
 				dir_x = 0; dir_y = -1; per_x = -1; per_y = 0;
 			break;
+			default:
+				dir_x = 0; dir_y = 0; per_x = 0; per_y = 0;
+			break;
 		}
 		
 		uint16_t centro = VISION/2;

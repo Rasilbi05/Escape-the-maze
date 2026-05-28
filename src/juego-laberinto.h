@@ -36,8 +36,7 @@ volatile uint8_t Laberinto[TAM_X][TAM_Y];
 */
 typedef struct{
 	uint16_t x, y;
-	//variable referida a la última dirección tomada del jugador (arriba, abajo, izquierda o derecha)
-	//ej: Direccion ultima_direccion;
+	joystick_dir ultima_direccion;
 }Jugador;
 
 /**
