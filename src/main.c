@@ -14,9 +14,8 @@
 #include "glcd.h"
 #include "timer_lpc40xx.h"
 #include "adc_lpc40xx.h"
-#include "adc_ntc.h"
 #include "adc_perifericos.h"
-#include "juego-laberinto.h"
+
 
 int main(void){
 	inicializar_perifericos(1e6);
@@ -27,11 +26,11 @@ int main(void){
 	timer_iniciar_ciclos_ms(TIMER0,1000);
 	
 	//inicializaciones
-	uint16_t valor_ldr;
+	uint16_t valor_joystick;
 	while(1){
-		valor_ldr = ldr_leer_valor(CANAL_LDR);
+		valor_joystick = joystick_leer();
 		
-		glcd_xprintf(0,0,YELLOW,DARKBLUE,FUENTE16X32,"El valor traducido de la LDR es: %d",valor_ldr);
+		glcd_xprintf(0,0,YELLOW,DARKBLUE,FUENTE16X32,"Valor joystick: %d",valor_joystick);
 		
 		timer_esperar_fin_ciclo(TIMER0);
 		//lógica del juego

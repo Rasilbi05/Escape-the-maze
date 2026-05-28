@@ -395,11 +395,6 @@
               <FilePath>..\src\adc_lpc40xx.lib</FilePath>
             </File>
             <File>
-              <FileName>adc_ntc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src\adc_ntc.c</FilePath>
-            </File>
-            <File>
               <FileName>base_lpc40xx.lib</FileName>
               <FileType>4</FileType>
               <FilePath>..\src\base_lpc40xx.lib</FilePath>
@@ -413,6 +408,11 @@
               <FileName>juego-laberinto.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\src\juego-laberinto.c</FilePath>
+            </File>
+            <File>
+              <FileName>adc_perifericos.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\adc_perifericos.c</FilePath>
             </File>
           </Files>
         </Group>
