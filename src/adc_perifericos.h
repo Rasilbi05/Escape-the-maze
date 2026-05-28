@@ -23,6 +23,7 @@
  #define UMBRAL_LUZ 200 								//Valor a partir del cual se iluminará el cono de visión del jugador
  #define UMBRAL_ABAJO_DERECHA 3900			//Valor límite para considerar un movimineto hacia abajo/derecha
  #define UMBRAL_ARRIBA_IZQUIERDA 100 		//Valor límite para considerar un movimiento hacia arriba/izquierda
+ #define FRECUENCIA_PERIFERICOS 1e6
  
 // ===== Perifericos - Constantes Publicas =====
 /**

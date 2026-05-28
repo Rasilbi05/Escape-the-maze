@@ -74,7 +74,7 @@ void actualizar_posicion_jugador(uint16_t x, uint16_t y){
 			}
 		}	
 	}
-	
+
 	//marcamos las casillas del jugador
 	for(int16_t dx = -5; dx < 5; ++dx){
 		for(int16_t dy = -5; dy < 5; ++dy){
@@ -88,6 +88,11 @@ void actualizar_posicion_jugador(uint16_t x, uint16_t y){
 }
 
 void laberinto_inicializar(){
+	
+	//inicializamos las dependencias para poder jugar
+	glcd_inicializar();
+	inicializar_perifericos(FRECUENCIA_PERIFERICOS);
+	timer_inicializar(TIMER0);
 	
 	//iniciamos el laberinto con todo a 0
 	for(uint16_t i = 0; i < TAM_X; ++i){
@@ -115,5 +120,50 @@ void laberinto_inicializar(){
 	
 	//Introducimos como posición del jugador la entrada al laberinto
 	actualizar_posicion_jugador(ENTRADA_X, ENTRADA_Y);
+	
+}
+
+void comenzar_juego(){
+	//recreamos una pantalla de inicio
+	timer_iniciar_ciclos_ms(TIMER0, 450);		//timer para simular un parpadeo de texto
+	
+	do{
+		glcd_borrar(NEGRO);
+		timer_esperar_fin_ciclo(TIMER0);
+		
+		const char *logo[] = {
+        " ______                               ",
+        "|  ____|                              ",
+        "| |__   ___  ___ __ _ _ __   ___      ",
+        "|  __| / __|/ __/ _` | '_ \\ / _ \\     ",
+        "| |____\\__ \\ (_| (_| | |_) |  __/     ",
+        "|______|___/\\___\\__,_| .__/ \\___|     ",
+        "                     | |              ",
+        "                     |_|              ",
+        " _______ _             __  __                  ",
+        "|__   __| |           |  \\/  |                 ",
+        "   | |  | |__   ___   | \\  / | __ _ _______  ",
+        "   | |  | '_ \\ / _ \\  | |\\/| |/ _` |_  / _ \\",
+        "   | |  | | | |  __/  | |  | | (_| |/ /  __/  ",
+        "   |_|  |_| |_|\\___|  |_|  |_|\\__,_/___\\___/ "
+    };
+
+    //Calculamnos el número de líneas del logo
+    uint8_t lineas = sizeof(logo) / sizeof(logo[0]);
+    
+		//dibujamos cada línea por separado
+    for(uint8_t i = 0; i < lineas; ++i){
+        glcd_texto(0, 0 + (i * 16), GREEN, BLACK, FUENTE8X16, logo[i]);
+    }
+		
+		glcd_rectangulo_relleno(315, 40, 475, 110, BLACK);
+		timer_esperar_fin_ciclo(TIMER0);
+		glcd_xprintf(315, 50, WHITE, NEGRO, FUENTE8X16," MUEVA EL JOYSTICK ");
+		glcd_xprintf(315, 70, WHITE, NEGRO, FUENTE8X16," HACIA ARRIBA PARA ");
+		glcd_xprintf(315, 90, WHITE, NEGRO, FUENTE8X16,"      COMENZAR     ");
+		timer_esperar_fin_ciclo(TIMER0);
+
+	}while(joystick_leer() != JOYSTICK_ARRIBA);
+		
 	
 }

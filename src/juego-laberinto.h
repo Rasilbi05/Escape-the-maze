@@ -12,6 +12,8 @@
 
 #include "tipos.h"
 #include "adc_perifericos.h"
+#include "glcd.h"
+#include "timer_lpc40xx.h"
 #define TAM_X				270
 #define TAM_Y 			480
 #define ENTRADA_X		0

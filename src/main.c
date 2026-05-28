@@ -23,7 +23,7 @@ int main(void){
 	glcd_borrar(NEGRO);
 	timer_inicializar(TIMER0);
 	
-	timer_iniciar_ciclos_ms(TIMER0,1000);
+	timer_iniciar_ciclos_ms(TIMER0,450);
 	
 	//inicializaciones
 	uint16_t valor_joystick;
@@ -32,7 +32,6 @@ int main(void){
 		
 		glcd_xprintf(0,0,YELLOW,DARKBLUE,FUENTE16X32,"Valor joystick: %d",valor_joystick);
 		
-		timer_esperar_fin_ciclo(TIMER0);
 		//lógica del juego
 	}
 
