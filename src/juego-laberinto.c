@@ -53,7 +53,5 @@ void laberinto_inicializar(){
 	
 	//Introducimos como posición del jugador la entrada al laberinto
 	actualizar_posicion_jugador(ENTRADA_X, ENTRADA_Y);
-
-	}
 	
 }

@@ -16,7 +16,7 @@
 #include "adc_lpc40xx.h"
 #include "adc_ntc.h"
 #include "adc_perifericos.h"
-
+#include "juego-laberinto.h"
 
 int main(void){
 	inicializar_perifericos(1e6);
