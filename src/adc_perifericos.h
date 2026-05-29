@@ -20,7 +20,7 @@
  #define CANAL_JOYSTICK_X ADC_CANAL_0
  #define CANAL_JOYSTICK_Y ADC_CANAL_1
  #define CANAL_JOYSTICK_B ADC_CANAL_4
- #define UMBRAL_LUZ 200 								//Valor a partir del cual se iluminará el cono de visión del jugador
+ #define UMBRAL_LUZ 200 								//Valor límite para iluinar el cono de visión del jugador
  #define UMBRAL_ABAJO_DERECHA 3900			//Valor límite para considerar un movimineto hacia abajo/derecha
  #define UMBRAL_ARRIBA_IZQUIERDA 100 		//Valor límite para considerar un movimiento hacia arriba/izquierda
  #define FRECUENCIA_PERIFERICOS 1e6
@@ -28,7 +28,7 @@
 // ===== Perifericos - Constantes Publicas =====
 /**
  * @brief Constantes para indicar la dirección hacia donde se pulsó el Joystick.
- * @ingroup Joystick
+ * @ingroup Perifericos
  */
 typedef enum  {
   JOYSTICK_NADA = 0,
@@ -38,11 +38,20 @@ typedef enum  {
   JOYSTICK_DERECHA = 4,
 	JOYSTICK_CENTRO = 5
 }joystick_dir;
+
+/**
+ * @brief Constantes para indicar la iluminación del cono de visión.
+ * @ingroup Perifericos
+ */
+typedef enum{
+	OSCURO = 0,
+	ILUMINADO = 1
+}iluminacion;
  
  void inicializar_perifericos(uint32_t frecuencia_adc);
- uint16_t ldr_leer_valor(adc_canal_t canal);
+ uint8_t encender_linterna(void);
 /**
- * @brief   Leer el joystick y retornar un número diferente según la dirección que se esté pulsando.
+ * @brief   Leer el joystick y retornar un número diferente según el valor del adc que se esté leyendo.
  * @ingroup Perifericos
  *
  * @retval  JOYSTICK_NADA/0 si no se está pulsando ningúna dirección.

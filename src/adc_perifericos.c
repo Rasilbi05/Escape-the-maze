@@ -22,10 +22,12 @@ void inicializar_perifericos(uint32_t frecuencia_adc){
 	adc_inicializar(frecuencia_adc,CANAL_JOYSTICK_Y);
 }
 
-uint16_t ldr_leer_valor(adc_canal_t canal){
-	
-	return adc_convertir(canal);
-
+uint8_t encender_linterna(void){
+	if(adc_convertir(CANAL_LDR) > UMBRAL_LUZ){
+		return OSCURO;
+	}else{
+		return ILUMINADO;
+	}
 }
 
 uint8_t joystick_leer(void){
