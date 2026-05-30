@@ -24,6 +24,7 @@
  #define UMBRAL_ABAJO_DERECHA 3900			//Valor límite para considerar un movimineto hacia abajo/derecha
  #define UMBRAL_ARRIBA_IZQUIERDA 100 		//Valor límite para considerar un movimiento hacia arriba/izquierda
  #define FRECUENCIA_PERIFERICOS 1e6
+
  
 // ===== Perifericos - Constantes Publicas =====
 /**
@@ -47,9 +48,31 @@ typedef enum{
 	OSCURO = 0,
 	ILUMINADO = 1
 }iluminacion;
- 
+
+/**
+ * @brief   Inicializar los canales del asdc conectados a los perifericos y habilitar interrupciones de LDR.
+ * @param 	frecuencia_adc Frecuencia a la que se va usar el adc de los periféricos.
+ * @ingroup Perifericos
+ */
  void inicializar_perifericos(uint32_t frecuencia_adc);
+
+/**
+ * @brief   Leer el valor del adc de la LDR y devolver un número según el valor retornado.
+ * @ingroup Perifericos
+ *
+ * @retval  OSCURO/0 si el valor de la ldr es superior a UMBRAL_LUZ
+ * @retval	ILUMINADO/1 si el valor de la ldr es inferior a UMBRAK_LUZ
+ */
  uint8_t encender_linterna(void);
+
+/**
+ * @brief   Devuelve el valor del adc de la LDR mediante interrupciones.
+ * @ingroup Perifericos
+ 
+ * @retval  OSCURO/0 si el valor de la ldr es superior a UMBRAL_LUZ
+ * @retval	ILUMINADO/1 si el valor de la ldr es inferior a UMBRAK_LUZ
+ */
+ uint8_t encender_linterna_int(void);
 /**
  * @brief   Leer el joystick y retornar un número diferente según el valor del adc que se esté leyendo.
  * @ingroup Perifericos
