@@ -118,11 +118,11 @@ void dibujar_cono_vision(uint16_t x, uint16_t y, joystick_dir direccion, uint8_t
 	int8_t dir_x = 0, dir_y = 0, per_x = 0, per_y = 0;
     
 	switch(direccion){
-		case JOYSTICK_ARRIBA:      dir_x = -1; dir_y = 0;  per_x = 0;  per_y = 1;  break;
-		case JOYSTICK_ABAJO:       dir_x = 1;  dir_y = 0;  per_x = 0;  per_y = -1; break;
-		case JOYSTICK_DERECHA:     dir_x = 0;  dir_y = 1;  per_x = 1;  per_y = 0;  break;
-		case JOYSTICK_IZQUIERDA:   dir_x = 0;  dir_y = -1; per_x = -1; per_y = 0;  break;
-		default:									 dir_x = 0;  dir_y = 0;  per_x = 0;  per_y = 0;  break;
+		case JOYSTICK_ARRIBA:      dir_x = 0;  dir_y = -1; per_x = 1;  per_y = 0;  break; 
+    case JOYSTICK_ABAJO:       dir_x = 0;  dir_y = 1;  per_x = -1; per_y = 0;  break; 
+    case JOYSTICK_DERECHA:     dir_x = 1;  dir_y = 0;  per_x = 0;  per_y = 1;  break; 
+    case JOYSTICK_IZQUIERDA:   dir_x = -1; dir_y = 0;  per_x = 0;  per_y = -1; break; 
+    default:                   dir_x = 0;  dir_y = 0;  per_x = 0;  per_y = 0;  break;
 	}
     
   //obtenemos la posición del jugador de la matriz de visión
@@ -228,7 +228,7 @@ void comenzar_juego(){
 	
 	//parpadeo del mensaje
 	do{
-		glcd_rectangulo_relleno(315, 40, 475, 110, BLACK);
+		glcd_rectangulo_relleno(315, 40, 475, 110, NEGRO);
 		timer_esperar_fin_ciclo(TIMER0);
 		glcd_xprintf(315, 50, WHITE, NEGRO, FUENTE8X16," MUEVA EL JOYSTICK ");
 		glcd_xprintf(315, 70, WHITE, NEGRO, FUENTE8X16," HACIA ARRIBA PARA ");
