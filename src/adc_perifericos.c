@@ -25,11 +25,11 @@ void inicializar_perifericos(uint32_t frecuencia_adc){
 	adc_inicializar(frecuencia_adc,CANAL_JOYSTICK_X);
 	adc_inicializar(frecuencia_adc,CANAL_JOYSTICK_Y);
 	//Configuración para habilitar las interrupciones de la ldr
-	//adc_configurar_interrupciones(CANAL_LDR,TRUE); 
-	//NVIC_ClearPendingIRQ(ADC_IRQn); 
-	//NVIC_SetPriority(ADC_IRQn, 0); 
-	//NVIC_EnableIRQ(ADC_IRQn); 
-	//__enable_irq();
+	adc_configurar_interrupciones(CANAL_LDR,TRUE); 
+	NVIC_ClearPendingIRQ(ADC_IRQn); 
+	NVIC_SetPriority(ADC_IRQn, 0); 
+	NVIC_EnableIRQ(ADC_IRQn); 
+	__enable_irq();
 	//Iniciliazicación necesaria para el botón del joystgick
 	
 }
@@ -65,7 +65,7 @@ uint8_t joystick_leer(void){
 	return JOYSTICK_NADA;
 }
 
-/*
+
 void ADC_IRQHandler(void){
 
 	uint16_t valor_adc = (LPC_ADC->DR[CANAL_LDR] >> 4) & 0xFFF;
@@ -77,4 +77,3 @@ void ADC_IRQHandler(void){
 	}
 
 }
-*/

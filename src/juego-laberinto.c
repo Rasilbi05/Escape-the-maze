@@ -197,6 +197,31 @@ void laberinto_inicializar(){
 	
 }
 
+bool_t movimiento_valido(uint16_t x, uint16_t y){
+	
+	//comprobamos que los valores estén dentro del rango permitido
+	if(x >= 0 && x < GLCD_TAMANO_X && y >= 0 && y < GLCD_TAMANO_Y){
+		//adaptamos las coordenadas
+		uint16_t bloque_x = x/10;
+		uint16_t bloque_y = y/10;
+		if(bloque_x >= GLCD_TAMANO_X/10){
+			bloque_x = GLCD_TAMANO_X/10 - 1;
+		}
+		if(bloque_y >= GLCD_TAMANO_Y/10){
+			bloque_y = GLCD_TAMANO_Y/10 - 1;
+		}
+		//Comprobamos en la matriz de visión si hay o no una pared
+		if(PAREDES_LABERINTO[bloque_y][bloque_x] == 1){
+			return FALSE;
+		}else{
+			return TRUE;
+		}
+	}else{
+		return FALSE;
+	}
+
+}
+
 void comenzar_juego(){
 	
 	//recreamos una pantalla de inicio
@@ -253,16 +278,24 @@ void comenzar_juego(){
 		joystick_dir nueva_direccion = joystick_leer();
 		switch(nueva_direccion){
 			case JOYSTICK_ARRIBA:
-				actualizar_posicion_jugador(J1.x, J1.y - 1, nueva_direccion);	
+				if(movimiento_valido(J1.x, J1.y-1)){
+					actualizar_posicion_jugador(J1.x, J1.y - 1, nueva_direccion);
+				}
 			break;
 			case JOYSTICK_ABAJO:
-				actualizar_posicion_jugador(J1.x, J1.y + 1, nueva_direccion);
+				if(movimiento_valido(J1.x, J1.y + 1)){
+					actualizar_posicion_jugador(J1.x, J1.y + 1, nueva_direccion);
+				}
 			break;
 			case JOYSTICK_IZQUIERDA:
-				actualizar_posicion_jugador(J1.x - 1, J1.y, nueva_direccion);
+				if(movimiento_valido(J1.x-1, J1.y)){
+					actualizar_posicion_jugador(J1.x - 1, J1.y, nueva_direccion);
+				}
 			break;
 			case JOYSTICK_DERECHA:
-				actualizar_posicion_jugador(J1.x + 1, J1.y, nueva_direccion);
+				if(movimiento_valido(J1.x+1, J1.y)){
+					actualizar_posicion_jugador(J1.x + 1, J1.y, nueva_direccion);
+				}
 			break;
 			default:
 			break;

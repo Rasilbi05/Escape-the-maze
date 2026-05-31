@@ -57,8 +57,8 @@ void dibujar_cono_vision(uint16_t centro_x, uint16_t centro_y, uint8_t direccion
 * @brief  Función encargada de calcular si habrá una pared en la nueva dirección del jugador
 * @param  x Coordenada X futura del jugador
 * @param  y Coordenada Y futura del jugador
-* @retval false El movimiento no es válido, ya que hay una pared
-* @retval true  El movimiento es válido, pues no hay ningún obstáculo
+* @retval FALSE El movimiento no es válido, ya que hay una pared
+* @retval TRUE  El movimiento es válido, pues no hay ningún obstáculo
 */
 bool_t movimiento_valido(uint16_t x, uint16_t y);
 
