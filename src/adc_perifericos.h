@@ -14,6 +14,7 @@
  #define ADC_PERIFERICOS_H
  
  #include "adc_lpc40xx.h"
+ #include "timer_lpc40xx.h"
  #include "tipos.h"
  
  #define CANAL_LDR ADC_CANAL_5
@@ -24,7 +25,9 @@
  #define UMBRAL_ABAJO_DERECHA 3900			//Valor límite para considerar un movimineto hacia abajo/derecha
  #define UMBRAL_ARRIBA_IZQUIERDA 100 		//Valor límite para considerar un movimiento hacia arriba/izquierda
  #define FRECUENCIA_PERIFERICOS 1e6
-
+ #define INDICE_JOY_X            0
+ #define INDICE_JOY_Y            1
+ #define INDICE_LDR              5
  
 // ===== Perifericos - Constantes Publicas =====
 /**
@@ -48,6 +51,8 @@ typedef enum{
 	OSCURO = 0,
 	ILUMINADO = 1
 }iluminacion;
+
+//========= FUNCIONES PÚBLICAS ==========
 
 /**
  * @brief   Inicializar los canales del asdc conectados a los perifericos y habilitar interrupciones de LDR.
@@ -86,6 +91,23 @@ typedef enum{
  */
  uint8_t joystick_leer(void);
  
+ /**
+ * @brief   Lanza la conversión de la LDR y hace que se ejecuten el resto mediannte interrupción.
+ * @ingroup Perifericos
+ */
+ void adc_iniciar_lectura(void);
+ /**
+ * @brief   Leer el joystick por interrupción y retornar un número diferente según el valor del adc leído.
+ * @ingroup Perifericos
+ *
+ * @retval  JOYSTICK_NADA/0 si no se está pulsando ningúna dirección.
+ * @retval  JOYSTICK_ARRIBA/1 si el joystick está pulsado hacia ARRIBA.
+ * @retval  JOYSTICK_ABAJO/2 si el joystick está pulsado hacia ABAJO.
+ * @retval  JOYSTICK_IZQUIERDA/3 si el joystick está pulsado hacia la IZQUIERDA.
+ * @retval  JOYSTICK_DERECHA/4 si el joystick está pulsado hacia la DERECHA.
+ * @retval  JOYSTICK_CENTRO/5 si el joystick está pulsado hacia el CENTRO.
+ */
+ uint8_t joystick_leer_int(void);
  
  #endif //ADC_PERIFERICOS_H
 
