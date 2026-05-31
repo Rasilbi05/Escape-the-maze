@@ -19,11 +19,14 @@
 
 
 int main(void){
-	//inicializaciones
+	
+	//inicializacion
 	laberinto_inicializar();
+	
 	while(1){
 		//juego
 		comenzar_juego();
+
 	}
 
 }

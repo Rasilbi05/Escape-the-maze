@@ -150,12 +150,12 @@ void dibujar_cono_vision(uint16_t x, uint16_t y, joystick_dir direccion, uint8_t
 					if(bloque_y >= GLCD_TAMANO_Y/10)
 						bloque_y = GLCD_TAMANO_Y/10 - 1;
 					//si se quiere borrar, pintamos la coordenada de negro
-					if(borrar){	
+					if(borrar){
 						glcd_punto(laberinto_x, laberinto_y, NEGRO); 
 					}else{       
 						if(PAREDES_LABERINTO[bloque_y][bloque_x] == PARED){
 							glcd_punto(laberinto_x, laberinto_y, BLANCO);  //Hay pared
-						}else if(PAREDES_LABERINTO[bloque_y][bloque_x] == JUGADOR){
+						}else if(Vision[i][j] == JUGADOR){
 							glcd_punto(laberinto_x, laberinto_y, ROJO);
 					}else{
 							glcd_punto(laberinto_x, laberinto_y, NEGRO);	////No hay pared, es el pasillo
@@ -183,6 +183,8 @@ void actualizar_posicion_jugador(uint16_t x, uint16_t y, joystick_dir direccion)
 	}else{
 		dibujar_cono_vision(x,y,direccion, 1);
 	}
+	//DIBUJADO PARA TESTEO; BORRAR EN LA VERSION FINAL O CUANDO FUNCIONE LDR
+	dibujar_cono_vision(x, y, direccion, 0);
 
 }
 
@@ -237,6 +239,39 @@ void comenzar_juego(){
 	}while(joystick_leer() != JOYSTICK_ARRIBA);
 		
 	//comienza el juego
-	glcd_xprintf(0,0, AZUL, NEGRO, FUENTE12X24, "Juego iniciado");
+	glcd_borrar(NEGRO);
+	actualizar_posicion_jugador(ENTRADA_X, ENTRADA_Y, JOYSTICK_DERECHA);
+	timer_esperar_fin_ciclo(TIMER0);		//espera un poco para no empezar al instante
+	
+	//creamos un pequeño delay para el movimiento
+	timer_iniciar_ciclos_ms(TIMER0, 15);
+	
+	//blucle del juego
+	while(J1.x != SALIDA_X || J1.y != SALIDA_Y){
+		timer_esperar_fin_ciclo(TIMER0);
+		//obtenemos la dirección leída por el joystick y vamos actualizando la posición del jugador
+		joystick_dir nueva_direccion = joystick_leer();
+		switch(nueva_direccion){
+			case JOYSTICK_ARRIBA:
+				actualizar_posicion_jugador(J1.x, J1.y - 1, nueva_direccion);	
+			break;
+			case JOYSTICK_ABAJO:
+				actualizar_posicion_jugador(J1.x, J1.y + 1, nueva_direccion);
+			break;
+			case JOYSTICK_IZQUIERDA:
+				actualizar_posicion_jugador(J1.x - 1, J1.y, nueva_direccion);
+			break;
+			case JOYSTICK_DERECHA:
+				actualizar_posicion_jugador(J1.x + 1, J1.y, nueva_direccion);
+			break;
+			default:
+			break;
+		}
+	}
+	
+	//una vez finalizado el laberinto, mostramos una pantalla de final y despues de 5 segundos, vuelve al inicio
+	timer_iniciar_ciclos_ms(TIMER0, 5000);
+	glcd_xprintf(0, GLCD_TAMANO_Y/2, VERDE, NEGRO, FUENTE8X16, "\t    Felicidades! Escapate del laberinto");
+	timer_esperar_fin_ciclo(TIMER0);
 	
 }

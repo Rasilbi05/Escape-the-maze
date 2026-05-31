@@ -14,10 +14,10 @@
 #include "adc_perifericos.h"
 #include "glcd.h"
 #include "timer_lpc40xx.h"
-#define ENTRADA_X		0
-#define ENTRADA_Y		10
-#define SALIDA_X		250
-#define SALIDA_Y		460
+#define ENTRADA_X		5
+#define ENTRADA_Y		15
+#define SALIDA_X		475
+#define SALIDA_Y		255
 #define VISION			50
 #define PARED				1
 #define JUGADOR			3
@@ -36,6 +36,9 @@ typedef struct{
 //========= FUNCIONES PRIVADAS ==========
 /**
 *	@brief 	 Función encargada de, en base a las nuevas coordenadas, actualizar la posición del jugador junto a su cono de visión
+* @param	 x Coordenada X futura respecto a la actual del jugador
+* @param   y Coordenada Y futura respecto a la actual del jugador
+* @param   direccion Nueva dirección que va a tomar el jugador
 * @ingroup Laberinto
 */
 void actualizar_posicion_jugador(uint16_t x, uint16_t y, joystick_dir direccion);
@@ -49,6 +52,15 @@ void actualizar_posicion_jugador(uint16_t x, uint16_t y, joystick_dir direccion)
 * @ingroup Laberinto
  */
 void dibujar_cono_vision(uint16_t centro_x, uint16_t centro_y, uint8_t direccion, uint8_t borrar);
+
+/**
+* @brief  Función encargada de calcular si habrá una pared en la nueva dirección del jugador
+* @param  x Coordenada X futura del jugador
+* @param  y Coordenada Y futura del jugador
+* @retval false El movimiento no es válido, ya que hay una pared
+* @retval true  El movimiento es válido, pues no hay ningún obstáculo
+*/
+bool_t movimiento_valido(uint16_t x, uint16_t y);
 
 //========= FUNCIONES PÚBLICAS ==========
 /**
