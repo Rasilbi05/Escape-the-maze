@@ -14,13 +14,12 @@
  #define ADC_PERIFERICOS_H
  
  #include "adc_lpc40xx.h"
- #include "timer_lpc40xx.h"
+ #include "gpio_lpc40xx.h"
  #include "tipos.h"
  
  #define CANAL_LDR ADC_CANAL_5
  #define CANAL_JOYSTICK_X ADC_CANAL_0
  #define CANAL_JOYSTICK_Y ADC_CANAL_1
- #define CANAL_JOYSTICK_B ADC_CANAL_4
  #define UMBRAL_LUZ 200 								//Valor límite para iluinar el cono de visión del jugador
  #define UMBRAL_ABAJO_DERECHA 3900			//Valor límite para considerar un movimineto hacia abajo/derecha
  #define UMBRAL_ARRIBA_IZQUIERDA 100 		//Valor límite para considerar un movimiento hacia arriba/izquierda
@@ -28,6 +27,7 @@
  #define INDICE_JOY_X            0
  #define INDICE_JOY_Y            1
  #define INDICE_LDR              5
+ #define PULSADO								 0
  
 // ===== Perifericos - Constantes Publicas =====
 /**
@@ -92,7 +92,7 @@ typedef enum{
  uint8_t joystick_leer(void);
  
  /**
- * @brief   Lanza la conversión de la LDR y hace que se ejecuten el resto mediannte interrupción.
+ * @brief   Lanza el adc en modo burst y guarda todos los valores leídos de los periféricos.
  * @ingroup Perifericos
  */
  void adc_iniciar_lectura(void);
