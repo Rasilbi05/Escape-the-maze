@@ -16,7 +16,7 @@
 #include "timer_lpc40xx.h"
 #define ENTRADA_X		5
 #define ENTRADA_Y		15
-#define SALIDA_X		475
+#define SALIDA_X		470
 #define SALIDA_Y		255
 #define VISION			50
 #define PARED				1

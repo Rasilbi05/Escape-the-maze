@@ -183,8 +183,6 @@ void actualizar_posicion_jugador(uint16_t x, uint16_t y, joystick_dir direccion)
 	}else{
 		dibujar_cono_vision(x,y,direccion, 1);
 	}
-	//DIBUJADO PARA TESTEO; BORRAR EN LA VERSION FINAL O CUANDO FUNCIONE LDR
-	dibujar_cono_vision(x, y, direccion, 0);
 
 }
 
@@ -272,7 +270,7 @@ void comenzar_juego(){
 	timer_iniciar_ciclos_ms(TIMER0, 15);
 	
 	//blucle del juego
-	while(J1.x != SALIDA_X || J1.y != SALIDA_Y){
+	while(J1.x < SALIDA_X || J1.y < SALIDA_Y){
 		timer_esperar_fin_ciclo(TIMER0);
 		//obtenemos la dirección leída por el joystick y vamos actualizando la posición del jugador
 		joystick_dir nueva_direccion = joystick_leer();

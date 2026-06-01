@@ -20,11 +20,11 @@
 
 int main(void){
 	
-	//inicializacion
+	//inicialización
 	laberinto_inicializar();
-	
+    
 	while(1){
-		//juego
+		//comienza el juego
 		comenzar_juego();
 
 	}
