@@ -255,11 +255,10 @@ void comenzar_juego(){
 	do{
 		glcd_rectangulo_relleno(315, 40, 475, 110, NEGRO);
 		timer_esperar_fin_ciclo(TIMER0);
-		glcd_xprintf(315, 50, WHITE, NEGRO, FUENTE8X16," MUEVA EL JOYSTICK ");
-		glcd_xprintf(315, 70, WHITE, NEGRO, FUENTE8X16," HACIA ARRIBA PARA ");
-		glcd_xprintf(315, 90, WHITE, NEGRO, FUENTE8X16,"      COMENZAR     ");
+		glcd_xprintf(315, 50, WHITE, NEGRO, FUENTE8X16," PULSE EL JOYSTICK ");
+		glcd_xprintf(315, 70, WHITE, NEGRO, FUENTE8X16,"   PARA COMENZAR   ");
 		timer_esperar_fin_ciclo(TIMER0);
-	}while(joystick_leer() != JOYSTICK_ARRIBA);
+	}while(joystick_leer() != JOYSTICK_CENTRO);
 		
 	//comienza el juego
 	glcd_borrar(NEGRO);

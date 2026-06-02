@@ -22,7 +22,7 @@ int main(void){
 	
 	//inicialización
 	laberinto_inicializar();
-    
+	
 	while(1){
 		//comienza el juego
 		comenzar_juego();
