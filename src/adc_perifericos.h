@@ -24,9 +24,6 @@
  #define UMBRAL_ABAJO_DERECHA 3900			//Valor límite para considerar un movimineto hacia abajo/derecha
  #define UMBRAL_ARRIBA_IZQUIERDA 100 		//Valor límite para considerar un movimiento hacia arriba/izquierda
  #define FRECUENCIA_PERIFERICOS 1e6
- #define INDICE_JOY_X            0
- #define INDICE_JOY_Y            1
- #define INDICE_LDR              5
  #define PULSADO								 0
  
 // ===== Perifericos - Constantes Publicas =====
@@ -55,7 +52,7 @@ typedef enum{
 //========= FUNCIONES PÚBLICAS ==========
 
 /**
- * @brief   Inicializar los canales del asdc conectados a los perifericos y habilitar interrupciones de LDR.
+ * @brief   Inicializar los canales del adc conectados a los perifericos.
  * @param 	frecuencia_adc Frecuencia a la que se va usar el adc de los periféricos.
  * @ingroup Perifericos
  */
@@ -71,14 +68,6 @@ typedef enum{
  uint8_t encender_linterna(void);
 
 /**
- * @brief   Devuelve el valor del adc de la LDR mediante interrupciones.
- * @ingroup Perifericos
- 
- * @retval  OSCURO/0 si el valor de la ldr es superior a UMBRAL_LUZ
- * @retval	ILUMINADO/1 si el valor de la ldr es inferior a UMBRAK_LUZ
- */
- uint8_t encender_linterna_int(void);
-/**
  * @brief   Leer el joystick y retornar un número diferente según el valor del adc que se esté leyendo.
  * @ingroup Perifericos
  *
@@ -90,24 +79,6 @@ typedef enum{
  * @retval  JOYSTICK_CENTRO/5 si el joystick está pulsado hacia el CENTRO.
  */
  uint8_t joystick_leer(void);
- 
- /**
- * @brief   Lanza el adc en modo burst y guarda todos los valores leídos de los periféricos.
- * @ingroup Perifericos
- */
- void adc_iniciar_lectura(void);
- /**
- * @brief   Leer el joystick por interrupción y retornar un número diferente según el valor del adc leído.
- * @ingroup Perifericos
- *
- * @retval  JOYSTICK_NADA/0 si no se está pulsando ningúna dirección.
- * @retval  JOYSTICK_ARRIBA/1 si el joystick está pulsado hacia ARRIBA.
- * @retval  JOYSTICK_ABAJO/2 si el joystick está pulsado hacia ABAJO.
- * @retval  JOYSTICK_IZQUIERDA/3 si el joystick está pulsado hacia la IZQUIERDA.
- * @retval  JOYSTICK_DERECHA/4 si el joystick está pulsado hacia la DERECHA.
- * @retval  JOYSTICK_CENTRO/5 si el joystick está pulsado hacia el CENTRO.
- */
- uint8_t joystick_leer_int(void);
  
  #endif //ADC_PERIFERICOS_H
 
