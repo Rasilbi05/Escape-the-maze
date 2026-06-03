@@ -7,6 +7,10 @@ Objects/
 doc/html/
 doc/latex/
 
+# Archivos de formato y corrección
+*.clang-format*
+*.clang-tidy*
+
 # --- Archivos de depuración y configuración de usuario ---
 *.uvguix.*
 *.uvoptx
