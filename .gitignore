@@ -3,6 +3,10 @@
 Listings/
 Objects/
 
+# Carpetas de doxygen
+doc/html/
+doc/latex/
+
 # --- Archivos de depuración y configuración de usuario ---
 *.uvguix.*
 *.uvoptx

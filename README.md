@@ -16,11 +16,12 @@ Te encuentras en un laberinto a oscuras, pero cuentas con una linterna especial:
 ### 🖲️ Componentes y Pinout
 El proyecto hace uso de periféricos analógicos y digitales mapeados de la siguiente forma (Pendiente de confirmar pines finales):
 
-| Periférico | Pin LPC4088 | Canal / Función | Descripción |
+| Periférico | Puerto / Pin LPC4088 | Canal / Función | Descripción |
 | :--- | :--- | :--- | :--- |
-| **Joystick Eje X** | *Por determinar* | ADC Canal X | Control movimiento horizontal |
-| **Joystick Eje Y** | *Por determinar* | ADC Canal Y | Control movimiento vertical |
-| **Foto-resistencia (LDR)** | *Por determinar* | ADC Canal Z | Control dinámico de iluminación |
+| **Joystick Eje X** | Puerto 0 Pin 23 | ADC Canal 0 | Control movimiento horizontal |
+| **Joystick Eje Y** | Puerto 0 Pin 24 | ADC Canal 1 | Control movimiento vertical |
+| **Joystick central** | Puerto 2 Pin 21 | Botón | Detección de pulsación del joystick |
+| **Foto-resistencia (LDR)** | Puerto 1 Pin 31 | ADC Canal 5 | Control dinámico de iluminación |
 | **Embedded Artists LCD** | Bus 24-bit | TFT / RGB | Pantalla principal de juego |
 | **J-Link EDU** | Interface SWD | Debug / Flash | Depuración y carga de firmware |
 
