@@ -10,27 +10,28 @@
  * @copyright GNU General Public License version 3 or later
 */
 
+#include "glcd.h"
 #include "tipos.h"
 #include "adc_perifericos.h"
-#include "glcd.h"
 #include "timer_lpc40xx.h"
-#define ENTRADA_X		5
-#define ENTRADA_Y		15
-#define SALIDA_X		470
-#define SALIDA_Y		255
-#define VISION			50
-#define PARED				1
-#define JUGADOR			3
+
+#define ENTRADA_X 5
+#define ENTRADA_Y 15
+#define SALIDA_X  470
+#define SALIDA_Y  255
+#define VISION    50
+#define PARED     1
+#define JUGADOR   3
 
 
 /**
 * @brief	 Tipo jugador para mantener toda su información
 * @ingroup Laberinto
 */
-typedef struct{
-	uint16_t x, y;
-	joystick_dir ultima_direccion;
-}Jugador;
+typedef struct {
+  uint16_t     x, y;
+  joystick_dir ultima_direccion;
+} Jugador;
 
 
 //========= FUNCIONES PRIVADAS ==========

@@ -25,15 +25,15 @@
 /*******************************************************************************
  * Constantes.
  */
-#define LED1            1
-#define LED2            2
-#define LED3            3
-#define LED4            4
+#define LED1          1
+#define LED2          2
+#define LED3          3
+#define LED4          4
 
-#define LED_ON          TRUE
-#define LED_ENCENDIDO   TRUE
-#define LED_OFF         FALSE
-#define LED_APAGADO     FALSE
+#define LED_ON        TRUE
+#define LED_ENCENDIDO TRUE
+#define LED_OFF       FALSE
+#define LED_APAGADO   FALSE
 
 /*******************************************************************************
  * Prototipos de funciones.
@@ -45,4 +45,4 @@ void led_apagar(int32_t numero_led);
 void led_invertir(int32_t numero_led);
 void led_ajustar(int32_t numero_led, bool_t estado);
 
-#endif  /* LEDS_H */
+#endif /* LEDS_H */

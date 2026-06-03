@@ -12,21 +12,20 @@
 
 #include <LPC407x_8x_177x_8x.h>
 #include "glcd.h"
-#include "timer_lpc40xx.h"
 #include "adc_lpc40xx.h"
 #include "adc_perifericos.h"
 #include "juego-laberinto.h"
+#include "timer_lpc40xx.h"
 
 
-int main(void){
-	
-	//inicialización
-	laberinto_inicializar();
-	
-	while(1){
-		//comienza el juego
-		comenzar_juego();
 
-	}
+int main(void) {
 
+  //inicialización
+  laberinto_inicializar();
+
+  while (1) {
+    //comienza el juego
+    comenzar_juego();
+  }
 }
