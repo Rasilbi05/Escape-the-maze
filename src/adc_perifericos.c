@@ -1,6 +1,6 @@
 /**
  * @file    adc_perifericos.c
- * @brief   Funciones necesarias para leer los valores anal�gicos de la LDR y del joystick.
+ * @brief   Funciones necesarias para leer los valores analagicos de la LDR y del joystick.
  *
  * @author  Jose Carlos Leal Iglesias
  * @author  Raul Silva Bienvenido
@@ -19,10 +19,10 @@ void inicializar_perifericos(uint32_t frecuencia_adc) {
   adc_inicializar(frecuencia_adc, CANAL_JOYSTICK_X);
   adc_inicializar(frecuencia_adc, CANAL_JOYSTICK_Y);
 
-  //Iniciliazicaci�n necesaria para el bot�n del joystgick
+  //Iniciliazicacion necesaria para el boton del joystgick
 
   LPC_IOCON->P2_21 =
-      (1u << 4);  //Activamos resistencia de pull-up para filtrar la pulsaci�n del bot�n.
+      (1u << 4);  //Activamos resistencia de pull-up para filtrar la pulsacion del boton.
   gpio_ajustar_dir(PUERTO2, PIN21, DIR_ENTRADA);
 }
 

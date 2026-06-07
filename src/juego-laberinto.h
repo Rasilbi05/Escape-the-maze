@@ -1,6 +1,6 @@
 /**
  * @file    juego-laberinto.h
- * @brief   Definición e implementación de funciones para jugar al laberinto
+ * @brief   Definicion e implementacion de funciones para jugar al laberinto
  *
  * @author  Raúl Silva Bienvenido
  * @author  Jose Carlos Leal Iglesias
@@ -25,7 +25,7 @@
 
 
 /**
-* @brief	 Tipo jugador para mantener toda su información
+* @brief	 Tipo jugador para mantener toda su informacion
 * @ingroup Laberinto
 */
 typedef struct {
@@ -36,41 +36,41 @@ typedef struct {
 
 //========= FUNCIONES PRIVADAS ==========
 /**
-*	@brief 	 Función encargada de, en base a las nuevas coordenadas, actualizar la posición del jugador junto a su cono de visión
+*	@brief 	 Funcion encargada de, en base a las nuevas coordenadas, actualizar la posicion del jugador junto a su cono de vision
 * @param	 x Coordenada X futura respecto a la actual del jugador
 * @param   y Coordenada Y futura respecto a la actual del jugador
-* @param   direccion Nueva dirección que va a tomar el jugador
+* @param   direccion Nueva direccion que va a tomar el jugador
 * @ingroup Laberinto
 */
 void actualizar_posicion_jugador(uint16_t x, uint16_t y, joystick_dir direccion);
 
 /**
-* @brief   Dibuja o borra el cono de visión del jugador directamente en la pantalla LCD.
+* @brief   Dibuja o borra el cono de vision del jugador directamente en la pantalla LCD.
 * @param   centro_x Coordenada X global
 * @param   centro_y Coordenada Y global
-* @param   direccion Dirección hacia la que apunta el joystick
+* @param   direccion Direccion hacia la que apunta el joystick
 * @param   borrar 1 para apagar la luz (pintar de negro), 0 para renderizar el escenario
 * @ingroup Laberinto
  */
 void dibujar_cono_vision(uint16_t centro_x, uint16_t centro_y, uint8_t direccion, uint8_t borrar);
 
 /**
-* @brief  Función encargada de calcular si habrá una pared en la nueva dirección del jugador
+* @brief  Funcion encargada de calcular si habra una pared en la nueva direccion del jugador
 * @param  x Coordenada X futura del jugador
 * @param  y Coordenada Y futura del jugador
-* @retval FALSE El movimiento no es válido, ya que hay una pared
-* @retval TRUE  El movimiento es válido, pues no hay ningún obstáculo
+* @retval FALSE El movimiento no es valido, ya que hay una pared
+* @retval TRUE  El movimiento es valido, pues no hay ningún obstaculo
 */
 bool_t movimiento_valido(uint16_t x, uint16_t y);
 
 //========= FUNCIONES PÚBLICAS ==========
 /**
-* @brief Función inicializadora de las matrices Laberinto y Jugador
+* @brief Funcion inicializadora de las matrices Laberinto y Jugador
 * @ingroup Laberinto
 */
 void laberinto_inicializar();
 /**
-* @brief Función encargada de comenzar el juego
+* @brief Funcion encargada de comenzar el juego
 * @ingroup Laberinto
 */
 void comenzar_juego();

@@ -1,6 +1,6 @@
 /**
  * @file    juego-laberinto.c
- * @brief   Definición e implementación de funciones para jugar al laberinto
+ * @brief   Definicion e implementacion de funciones para jugar al laberinto
  *
  * @author  Raúl Silva Bienvenido
  * @author  Jose Carlos Leal Iglesias
@@ -12,7 +12,7 @@
 
 #include "juego-laberinto.h"
 
-//========== DEFINICIÓN DE MATRICES UTILIZADAS ==========
+//========== DEFINICION DE MATRICES UTILIZADAS ==========
 /**
 * @brief	 Variable en la que se almacenen todos los datos del jugador
 * @ingroup Laberinto
@@ -22,7 +22,7 @@ volatile Jugador J1;
 /**
 * @brief   Valores iniciales de las paredes del laberinto
 * @ingroup Laberinto
-* @note	   Los ejes están invertidos, ya que hemos representado la matriz de forma horizontal por comodidad visual y semejanza a la pantalla real	
+* @note	   Los ejes estan invertidos, ya que hemos representado la matriz de forma horizontal por comodidad visual y semejanza a la pantalla real	
 */
 const uint8_t PAREDES_LABERINTO[GLCD_TAMANO_Y / 10][GLCD_TAMANO_X / 10] = {
     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
@@ -81,7 +81,7 @@ const uint8_t PAREDES_LABERINTO[GLCD_TAMANO_Y / 10][GLCD_TAMANO_X / 10] = {
      1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
 
 /**
-*	@brief 	 Matriz de visión del jugador
+*	@brief 	 Matriz de vision del jugador
 * @ingroup Laberinto
 */
 const uint8_t Vision[VISION][VISION] = {
@@ -188,7 +188,7 @@ const uint8_t Vision[VISION][VISION] = {
 
 
 void dibujar_cono_vision(uint16_t x, uint16_t y, joystick_dir direccion, uint8_t borrar) {
-  //variables que nos servirán para realizar la rotación correspondiente a la dirección del jugador
+  //variables que nos serviran para realizar la rotacion correspondiente a la direccion del jugador
   int8_t dir_x = 0, dir_y = 0, per_x = 0, per_y = 0;
 
   switch (direccion) {
@@ -224,9 +224,9 @@ void dibujar_cono_vision(uint16_t x, uint16_t y, joystick_dir direccion, uint8_t
       break;
   }
 
-  //obtenemos la posición del jugador de la matriz de visión
+  //obtenemos la posicion del jugador de la matriz de vision
   uint16_t centro = VISION / 2;
-  //recorremos la matriz para mostrar las paredes según su cono de visión
+  //recorremos la matriz para mostrar las paredes según su cono de vision
   for (uint16_t i = 0; i < VISION; ++i) {
     for (uint16_t j = 0; j < VISION; ++j) {
       //hay una pared, o el propio jugador
@@ -236,7 +236,7 @@ void dibujar_cono_vision(uint16_t x, uint16_t y, joystick_dir direccion, uint8_t
         //calculamos las coordenadas respecto al laberinto original
         int16_t laberinto_x = x + (frente * dir_x) + (lateral * per_x);
         int16_t laberinto_y = y + (frente * dir_y) + (lateral * per_y);
-        //comprobamos que las coordenadas están en el rango permitido
+        //comprobamos que las coordenadas estan en el rango permitido
         if (laberinto_x >= GLCD_X_MINIMO && laberinto_x <= GLCD_X_MAXIMO &&
             laberinto_y >= GLCD_Y_MINIMO && laberinto_y <= GLCD_Y_MAXIMO) {
           //obtenemos la coordenada simplificada
@@ -273,12 +273,12 @@ void actualizar_posicion_jugador(uint16_t x, uint16_t y, joystick_dir direccion)
   //Borramos las coordenadas previas
   dibujar_cono_vision(J1.x, J1.y, J1.ultima_direccion, 1);
 
-  //Actualizamos la posición del jugador
+  //Actualizamos la posicion del jugador
   J1.x                = x;
   J1.y                = y;
   J1.ultima_direccion = direccion;
 
-  //Si está la linterna activa, mostramos lo que tenga el personaje por delante
+  //Si esta la linterna activa, mostramos lo que tenga el personaje por delante
   if (encender_linterna() == ILUMINADO) {
     dibujar_cono_vision(x, y, direccion, 0);
   } else {
@@ -296,7 +296,7 @@ void laberinto_inicializar() {
 
 bool_t movimiento_valido(uint16_t x, uint16_t y) {
 
-  //comprobamos que los valores estén dentro del rango permitido
+  //comprobamos que los valores esten dentro del rango permitido
   if (x >= 0 && x < GLCD_TAMANO_X && y >= 0 && y < GLCD_TAMANO_Y) {
     //adaptamos las coordenadas
     uint16_t bloque_x = x / 10;
@@ -307,7 +307,7 @@ bool_t movimiento_valido(uint16_t x, uint16_t y) {
     if (bloque_y >= GLCD_TAMANO_Y / 10) {
       bloque_y = GLCD_TAMANO_Y / 10 - 1;
     }
-    //Comprobamos en la matriz de visión si hay o no una pared
+    //Comprobamos en la matriz de vision si hay o no una pared
     if (PAREDES_LABERINTO[bloque_y][bloque_x] == 1) {
       return FALSE;
     } else {
@@ -339,10 +339,10 @@ void comenzar_juego() {
                         "   | |  | | | |  __/  | |  | | (_| |/ /  __/  ",
                         "   |_|  |_| |_|\\___|  |_|  |_|\\__,_/___\\___/ "};
 
-  //Calculamnos el número de líneas del logo
+  //Calculamnos el número de lineas del logo
   uint8_t lineas = sizeof(logo) / sizeof(logo[0]);
 
-  //dibujamos cada línea por separado
+  //dibujamos cada linea por separado
   for (uint8_t i = 0; i < lineas; ++i) {
     glcd_texto(0, 0 + (i * 16), GREEN, BLACK, FUENTE8X16, logo[i]);
   }
@@ -361,13 +361,13 @@ void comenzar_juego() {
   actualizar_posicion_jugador(ENTRADA_X, ENTRADA_Y, JOYSTICK_DERECHA);
   timer_esperar_fin_ciclo(TIMER0);  //espera un poco para no empezar al instante
 
-  //creamos un pequeño delay para el movimiento
+  //creamos un delay para el movimiento
   timer_iniciar_ciclos_ms(TIMER0, 15);
 
   //blucle del juego
   while (J1.x < SALIDA_X || J1.y < SALIDA_Y) {
     timer_esperar_fin_ciclo(TIMER0);
-    //obtenemos la dirección leída por el joystick y vamos actualizando la posición del jugador
+    //obtenemos la direccion leida por el joystick y vamos actualizando la posicion del jugador
     joystick_dir nueva_direccion = joystick_leer();
     switch (nueva_direccion) {
       case JOYSTICK_ARRIBA:

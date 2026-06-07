@@ -1,6 +1,6 @@
 /**
  * @file    adc_perifericos.h
- * @brief   Funciones y  macros para el manejo de los perif�ricos del juego.
+ * @brief   Funciones y  macros para el manejo de los perifericos del juego.
  *
  * @author  Jose Carlos Leal Iglesias
  * @author  Raul Silva Bienvenido
@@ -20,16 +20,16 @@
 #define CANAL_LDR            ADC_CANAL_5
 #define CANAL_JOYSTICK_X     ADC_CANAL_0
 #define CANAL_JOYSTICK_Y     ADC_CANAL_1
-#define UMBRAL_LUZ           200   //Valor l�mite para iluinar el cono de visi�n del jugador
-#define UMBRAL_ABAJO_DERECHA 3900  //Valor l�mite para considerar un movimineto hacia abajo/derecha
+#define UMBRAL_LUZ           200   //Valor limite para iluinar el cono de vision del jugador
+#define UMBRAL_ABAJO_DERECHA 3900  //Valor limite para considerar un movimineto hacia abajo/derecha
 #define UMBRAL_ARRIBA_IZQUIERDA                                                                    \
-  100  //Valor l�mite para considerar un movimiento hacia arriba/izquierda
+  100  //Valor limite para considerar un movimiento hacia arriba/izquierda
 #define FRECUENCIA_PERIFERICOS 1e6
 #define PULSADO                0
 
 // ===== Perifericos - Constantes Publicas =====
 /**
- * @brief Constantes para indicar la direcci�n hacia donde se puls� el Joystick.
+ * @brief Constantes para indicar la direccion hacia donde se pulsa el Joystick.
  * @ingroup Perifericos
  */
 typedef enum {
@@ -42,22 +42,22 @@ typedef enum {
 } joystick_dir;
 
 /**
- * @brief Constantes para indicar la iluminaci�n del cono de visi�n.
+ * @brief Constantes para indicar la iluminacion del cono de vision.
  * @ingroup Perifericos
  */
 typedef enum { OSCURO = 0, ILUMINADO = 1 } iluminacion;
 
-//========= FUNCIONES P�BLICAS ==========
+//========= FUNCIONES PUBLICAS ==========
 
 /**
  * @brief   Inicializar los canales del adc conectados a los perifericos.
- * @param 	frecuencia_adc Frecuencia a la que se va usar el adc de los perif�ricos.
+ * @param 	frecuencia_adc Frecuencia a la que se va usar el adc de los perifiricos.
  * @ingroup Perifericos
  */
 void inicializar_perifericos(uint32_t frecuencia_adc);
 
 /**
- * @brief   Leer el valor del adc de la LDR y devolver un n�mero seg�n el valor retornado.
+ * @brief   Leer el valor del adc de la LDR y devolver un numero segun el valor retornado.
  * @ingroup Perifericos
  *
  * @retval  OSCURO/0 si el valor de la ldr es superior a UMBRAL_LUZ
@@ -66,15 +66,15 @@ void inicializar_perifericos(uint32_t frecuencia_adc);
 uint8_t encender_linterna(void);
 
 /**
- * @brief   Leer el joystick y retornar un n�mero diferente seg�n el valor del adc que se est� leyendo.
+ * @brief   Leer el joystick y retornar un numero diferente segun el valor del adc que se este leyendo.
  * @ingroup Perifericos
  *
- * @retval  JOYSTICK_NADA/0 si no se est� pulsando ning�na direcci�n.
- * @retval  JOYSTICK_ARRIBA/1 si el joystick est� pulsado hacia ARRIBA.
- * @retval  JOYSTICK_ABAJO/2 si el joystick est� pulsado hacia ABAJO.
- * @retval  JOYSTICK_IZQUIERDA/3 si el joystick est� pulsado hacia la IZQUIERDA.
- * @retval  JOYSTICK_DERECHA/4 si el joystick est� pulsado hacia la DERECHA.
- * @retval  JOYSTICK_CENTRO/5 si el joystick est� pulsado hacia el CENTRO.
+ * @retval  JOYSTICK_NADA/0 si no se esta pulsando ninguna direccion.
+ * @retval  JOYSTICK_ARRIBA/1 si el joystick esta pulsado hacia ARRIBA.
+ * @retval  JOYSTICK_ABAJO/2 si el joystick esta pulsado hacia ABAJO.
+ * @retval  JOYSTICK_IZQUIERDA/3 si el joystick esta pulsado hacia la IZQUIERDA.
+ * @retval  JOYSTICK_DERECHA/4 si el joystick esta pulsado hacia la DERECHA.
+ * @retval  JOYSTICK_CENTRO/5 si el joystick esta pulsado hacia el CENTRO.
  */
 uint8_t joystick_leer(void);
 
